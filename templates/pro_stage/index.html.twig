@@ -1,3 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
 <h1>Bienvenue sur Pro Stage</h1>
 
 <p>
@@ -9,3 +13,6 @@ Vous trouverez ci-dessous les dernières ressources pédagogiques ajoutées sur 
 <li><a href="{{path('pro_stage_stages',{id:1})}}">stages</a></li>
 
 </ul>
+
+{% endblock %}
+
