@@ -41,11 +41,24 @@ class ProStageController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/stages/{id}", name="pro_stage_stages")
+     /**
+     * @Route("/stages", name="pro_stage_stage")
      */
 
-    public function stages_vue($id): Response
+    public function liste_stages_vue(): Response
+    {
+        return $this->render('pro_stage/listeStages.html.twig', [
+            'controller_name' => 'Controleur ProStage stages'
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/stages/{id}", name="pro_stage_stages_id")
+     */
+
+    public function stage_vue($id): Response
     {
         return $this->render('pro_stage/stages.html.twig', [
             'controller_name' => 'Controleur ProStage stages',
