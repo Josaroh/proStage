@@ -47,8 +47,10 @@ class ProStageController extends AbstractController
 
     public function liste_stages_vue(): Response
     {
+        $stages=$this->getDoctrine()->getRepository(Stage::class)->findAll();
         return $this->render('pro_stage/listeStages.html.twig', [
-            'controller_name' => 'Controleur ProStage stages'
+            'controller_name' => 'Controleur ProStage stages',
+            'listeSatges' => $stages
         ]);
     }
 

@@ -88,7 +88,13 @@ class AppFixtures extends Fixture
 
             $stage->addFormation($formation);
 
-            $numEntreprise
+            $numEntreprise = $faker->numberBetween($min=0,$max=14);
+
+            $stage->setEntreprise($tabEntreprise[$numEntreprise]);
+            $tabEntreprise[$numEntreprise]->addStage($stage);
+
+            $manager->persist($stage);
+            $manager->persist($tabEntreprise[$numEntreprise]);
         }
     
         $manager->flush();
