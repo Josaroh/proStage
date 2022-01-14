@@ -8,26 +8,28 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
- 
- <div>
-    <h1>{{ entreprise.nom }}</h1>
-</div>
-
-{% for stage in entreprise.stages %}
-<div>
-    <a href="{{ path('pro_stage_stages_id',{'id': stage.id})}}">
-    <h1>{{ stage.titre }}</h1>
-    <h1>{{ stage.description }}</h1>
-    <h1>{{ stage.email }}</h1>
+ <h1>{{entreprise.nom}}</h1>
+<div class="container">
+  <div class="row row-cols-2">
+  {% for stage in entreprise.stages %}
+   <a href="{{ path('pro_stage_stages_id',{'id': stage.id})}}">
+    <div class="col">
+        <h2>
+      {{ stage.titre }}
+			</h2>
+			<p>
+				{{ stage.description }}
+			</p>
+            <p>
+				{{ stage.email }}
+			</p>
+            <p>
+				{{ entreprise.activite }}
+			</p>
+    </div>
     </a>
+ {% endfor %}
+  </div>
 </div>
-{% endfor %}
 
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Temp/symfony/proStage/src/Controller/ProStageController.php'|file_link(0) }}">src/Controller/ProStageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Temp/symfony/proStage/templates/pro_stage/index.html.twig'|file_link(0) }}">templates/pro_stage/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

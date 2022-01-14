@@ -9,23 +9,28 @@
 </style>
 
  <div>
-    <h1>{{ stage.titre }}</h1>
-    <h1>{{ stage.description }}</h1>
-    <h1>{{ stage.email }}</h1>
-    <h1><a href="{{ path('pro_stage_stageParEntreprise',{'id': stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></h1>
+    <h1>Titre: {{ stage.titre }}</h1>
+    <h1>Description: {{ stage.description }}</h1>
+    <h1>Email:{{ stage.email }}</h1>
+    <h1>Entreprise:<a href="{{ path('pro_stage_stageParEntreprise',{'id': stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></h1>
    
 </div>
 
  {% for formation in stage.formations %}
-    <h1><a href="{{ path('pro_stage_stageParFormation',{'id': formation.id})}}">{{ formation.nomCourt }}</a></h1>
+    <h1>Formation: <a href="{{ path('pro_stage_stageParFormation',{'id': formation.id})}}">{{ formation.nomCourt }}</a></h1>
     {% endfor %}
- 
 
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Temp/symfony/proStage/src/Controller/ProStageController.php'|file_link(0) }}">src/Controller/ProStageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Temp/symfony/proStage/templates/pro_stage/index.html.twig'|file_link(0) }}">templates/pro_stage/index.html.twig</a></code></li>
-    </ul>
 </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 {% endblock %}
