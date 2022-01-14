@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
         /*********************************************
          ********  creation des entreprises *********
          **********************************************/
-        $nbEntreprises = 15;
+        $nbEntreprises = 4;
         $tabActivite = array("Assistance, maintenance, dépannage informatique", "Conseils, audit, ingénierie informatique", "Développement de logiciels de programmation, d'exploitation, de gestion"
             , "Développement de progiciels applicatifs, de gestion","Développement, commerce de gros de systèmes dédiés, terminaux d'acquisition de données","Édition, commerce de gros de logiciels de programmation, d'exploitation, de gestion","Hébergement de sites internet, dépôt de noms de domaine",
             "Développement, programmation informatique","Traitement, saisie de données informatiques","Exploitation de sites web","Serveur, éditeur de banque de données");
@@ -88,7 +88,7 @@ class AppFixtures extends Fixture
 
             $stage->addFormation($formation);
 
-            $numEntreprise = $faker->numberBetween($min=0,$max=14);
+            $numEntreprise = $faker->numberBetween($min=0,$max=3);
 
             $stage->setEntreprise($tabEntreprise[$numEntreprise]);
             $tabEntreprise[$numEntreprise]->addStage($stage);

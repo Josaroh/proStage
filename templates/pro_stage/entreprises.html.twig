@@ -8,6 +8,20 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+{% for entreprise in listeEntreprises %}
+<div>
+    <a href="{{ path('pro_stage_stageParEntreprise',{'id': entreprise.id})}}">
+    <h1>{{ entreprise.nom }}</h1>
+    <h1>{{ entreprise.adresse }}</h1>
+    <h1>{{ entreprise.siteWeb }}</h1>
+    <h1>{{ entreprise.activite }}</h1>
+    </a>
+</div>
+{% endfor %}
+
+
+
+
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 

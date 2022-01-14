@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Stage;
+use App\Entity\Entreprise;
+use App\Entity\Formation;
 
 class ProStageController extends AbstractController
 {
@@ -25,8 +28,11 @@ class ProStageController extends AbstractController
 
     public function entreprises_vue(): Response
     {
+        $entreprises=$this->getDoctrine()->getRepository(Entreprise::class)->findAll();
+
         return $this->render('pro_stage/entreprises.html.twig', [
             'controller_name' => 'Controleur ProStage entreprises',
+            'listeEntreprises' => $entreprises
         ]);
     }
 
@@ -36,8 +42,10 @@ class ProStageController extends AbstractController
 
     public function foramtions_vue(): Response
     {
+        $formations=$this->getDoctrine()->getRepository(Formation::class)->findAll();
         return $this->render('pro_stage/formations.html.twig', [
             'controller_name' => 'Controleur ProStage formations',
+            'listeFormations' => $formations
         ]);
     }
 
@@ -50,7 +58,7 @@ class ProStageController extends AbstractController
         $stages=$this->getDoctrine()->getRepository(Stage::class)->findAll();
         return $this->render('pro_stage/listeStages.html.twig', [
             'controller_name' => 'Controleur ProStage stages',
-            'listeSatges' => $stages
+            'listeStages' => $stages
         ]);
     }
 
@@ -62,9 +70,39 @@ class ProStageController extends AbstractController
 
     public function stage_vue($id): Response
     {
+        $stage=$this->getDoctrine()->getRepository(Stage::class)->find($id);
+
         return $this->render('pro_stage/stages.html.twig', [
             'controller_name' => 'Controleur ProStage stages',
-            'idRessource' => $id
+            'stage' => $stage
+        ]);
+    }
+
+    /**
+     * @Route("/entreprises/{id}", name="pro_stage_stageParEntreprise")
+     */
+
+    public function entreprise_stage_vue($id): Response
+    {
+        $entreprise=$this->getDoctrine()->getRepository(Entreprise::class)->find($id);
+
+        return $this->render('pro_stage/entrepriseStage.html.twig', [
+            'controller_name' => 'Controleur ProStage stages',
+            'entreprise' => $entreprise
+        ]);
+    }
+
+    /**
+     * @Route("/formations/{id}", name="pro_stage_stageParFormation")
+     */
+
+    public function formation_stage_vue($id): Response
+    {
+        $formation=$this->getDoctrine()->getRepository(Formation::class)->find($id);
+
+        return $this->render('pro_stage/formationStage.html.twig', [
+            'controller_name' => 'Controleur ProStage stages',
+            'formation' => $formation
         ]);
     }
 }

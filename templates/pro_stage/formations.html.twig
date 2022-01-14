@@ -8,6 +8,19 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+{% for formation in listeFormations %}
+<div>
+    <a href="{{ path('pro_stage_stageParFormation',{'id': formation.id})}}">
+    <h1>{{ formation.nomCourt }}</h1>
+    <h1>{{ formation.nomLong }}</h1>
+    </a>
+</div>
+{% endfor %}
+
+
+
+
+
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 

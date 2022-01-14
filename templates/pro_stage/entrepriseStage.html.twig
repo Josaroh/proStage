@@ -8,18 +8,20 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
+ 
  <div>
+    <h1>{{ entreprise.nom }}</h1>
+</div>
+
+{% for stage in entreprise.stages %}
+<div>
+    <a href="{{ path('pro_stage_stages_id',{'id': stage.id})}}">
     <h1>{{ stage.titre }}</h1>
     <h1>{{ stage.description }}</h1>
     <h1>{{ stage.email }}</h1>
-    <h1><a href="{{ path('pro_stage_stageParEntreprise',{'id': stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></h1>
-   
+    </a>
 </div>
-
- {% for formation in stage.formations %}
-    <h1><a href="{{ path('pro_stage_stageParFormation',{'id': formation.id})}}">{{ formation.nomCourt }}</a></h1>
-    {% endfor %}
- 
+{% endfor %}
 
 
     This friendly message is coming from:
