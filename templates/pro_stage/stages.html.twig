@@ -12,7 +12,7 @@
     <h1>Titre: {{ stage.titre }}</h1>
     <h1>Description: {{ stage.description }}</h1>
     <h1>Email:{{ stage.email }}</h1>
-    <h1>Entreprise:<a href="{{ path('pro_stage_stageParEntreprise',{'id': stage.entreprise.id})}}">{{ stage.entreprise.nom }}</a></h1>
+    <h1>Entreprise:<a href="{{ path('pro_stage_stageParEntreprise',{'nom': stage.entreprise.nom})}}">{{ stage.entreprise.nom }}</a></h1>
    
 </div>
 

@@ -12,7 +12,7 @@
 <div class="container">
   <div class="row row-cols-2">
   {% for entreprise in listeEntreprises %}
-  <a href="{{ path('pro_stage_stageParEntreprise',{'id': entreprise.id})}}">
+  <a href="{{ path('pro_stage_stageParEntreprise',{'nom': entreprise.nom})}}">
     <div class="col">
         <h2>
       {{ entreprise.nom }}

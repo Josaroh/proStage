@@ -55,7 +55,7 @@ class ProStageController extends AbstractController
 
     public function liste_stages_vue(): Response
     {
-        $stages=$this->getDoctrine()->getRepository(Stage::class)->findAll();
+        $stages=$this->getDoctrine()->getRepository(Stage::class)->findStageEtEntreprise();
         return $this->render('pro_stage/listeStages.html.twig', [
             'controller_name' => 'Controleur ProStage stages',
             'listeStages' => $stages
@@ -79,16 +79,16 @@ class ProStageController extends AbstractController
     }
 
     /**
-     * @Route("/entreprises/{id}", name="pro_stage_stageParEntreprise")
+     * @Route("/entreprises/{nom}", name="pro_stage_stageParEntreprise")
      */
 
-    public function entreprise_stage_vue($id): Response
+    public function entreprise_stage_vue($nom): Response
     {
-        $entreprise=$this->getDoctrine()->getRepository(Entreprise::class)->find($id);
+        $stages=$this->getDoctrine()->getRepository(Stage::class)->findStagesPourUneEntreprise($nom);
 
         return $this->render('pro_stage/entrepriseStage.html.twig', [
             'controller_name' => 'Controleur ProStage stages',
-            'entreprise' => $entreprise
+            'stages' => $stages
         ]);
     }
 

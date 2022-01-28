@@ -8,10 +8,10 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
- <h1>{{entreprise.nom}}</h1>
+ <h1>{{stages[0].entreprise.nom}}</h1>
 <div class="container">
   <div class="row row-cols-2">
-  {% for stage in entreprise.stages %}
+  {% for stage in stages %}
    <a href="{{ path('pro_stage_stages_id',{'id': stage.id})}}">
     <div class="col">
         <h2>
@@ -24,7 +24,7 @@
 				{{ stage.email }}
 			</p>
             <p>
-				{{ entreprise.activite }}
+				{{ stage.entreprise.activite }}
 			</p>
     </div>
     </a>
