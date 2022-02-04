@@ -21,19 +21,13 @@
                     <li class="nav-item active">
 							       <a class="nav-link" href="{{path('pro_stage_formations')}}">Formations</a>
 					      	  </li>
-                    <li class="nav-item active">
-							       <a class="nav-link" href="{{path('pro_stage_formulaireEntreprise')}}"><button type="button" class="btn btn-primary">Ajouter Entreprise</button></a>
-					      	  </li>
 					        </ul>
 				        </div>
 		        	</nav>
 		        </div>
 	        </div>
         </div>  
-        {% endblock %}
-
-
-
+{% endblock %}
 
 {% block contenu %}
 <style>
@@ -43,33 +37,9 @@
 
 
 
+{{ form(formulaire) }}
 
-
-
-
-<div class="container">
-  
-  <div class="row row-cols-2">
-  {% for entreprise in listeEntreprises %}
-  <a href="{{ path('pro_stage_stageParEntreprise',{'nom': entreprise.nom})}}">
-    <div class="col">
-        <h2>
-      {{ entreprise.nom }}
-			</h2>
-			<p>
-				{{ entreprise.adresse }}
-			</p>
-            <p>
-				{{ entreprise.siteWeb }}
-			</p>
-            <p>
-				{{ entreprise.activite }}
-			</p>
-    </div>
-    </a>
- {% endfor %}
-  </div>
-</div>
+<button type="submit" class="btn btn-dark">Enregistrer</button>
 
 
 

@@ -105,4 +105,25 @@ class ProStageController extends AbstractController
             'formation' => $formation
         ]);
     }
+
+    /**
+     * @Route("/formulaireEntreprise", name="pro_stage_formulaireEntreprise")
+     */
+
+    public function formulaire_entreprise_vue(): Response
+    {
+        $entreprise = new Entreprise();
+
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+                                ->add('nom')
+                                ->add('adresse')
+                                ->add('siteweb')
+                                ->add('activite')
+                                ->getForm()
+                                ->createView();
+
+        return $this->render('pro_stage/formulaireEntreprise.html.twig',[
+            'formulaire' => $formulaireEntreprise
+        ]);
+    }
 }
