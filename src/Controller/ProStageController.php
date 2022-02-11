@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ProStageController extends AbstractController
 {
@@ -110,20 +112,31 @@ class ProStageController extends AbstractController
      * @Route("/formulaireEntreprise", name="pro_stage_formulaireEntreprise")
      */
 
-    public function formulaire_entreprise_vue(): Response
+    public function formulaire_entreprise_vue(Request $request, EntityManagerInterface $manager): Response
     {
         $entreprise = new Entreprise();
 
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
                                 ->add('nom')
                                 ->add('adresse')
-                                ->add('siteweb')
+                                ->add('siteWeb')
                                 ->add('activite')
-                                ->getForm()
-                                ->createView();
+                                ->getForm();
+
+
+$formulaireEntreprise->handleRequest($request);
+
+if($formulaireEntreprise->isSubmitted()){
+    $manager->persist($entreprise);
+    $manager->flush();
+
+    return $this->redirectToRoute('pro_stage_accueil');
+}
+
+        
 
         return $this->render('pro_stage/formulaireEntreprise.html.twig',[
-            'formulaire' => $formulaireEntreprise
+            'formulaire' => $formulaireEntreprise->createView() 
         ]);
     }
 }

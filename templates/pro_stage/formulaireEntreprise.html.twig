@@ -37,9 +37,18 @@
 
 
 
-{{ form(formulaire) }}
+{{ form_start(formulaire) }}
+<form>
 
-<button type="submit" class="btn btn-dark">Enregistrer</button>
+{{ form_row(formulaire.nom)}}
+{{ form_row(formulaire.adresse)}}
+{{ form_row(formulaire.siteWeb)}}
+{{ form_row(formulaire.activite)}}
+<button type="submit">Submit</button>
+
+
+</form>
+
 
 
 
