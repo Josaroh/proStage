@@ -10,6 +10,11 @@ use App\Entity\Entreprise;
 use App\Entity\Formation;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Validator\Constraints\Url;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class ProStageController extends AbstractController
 {
@@ -117,16 +122,16 @@ class ProStageController extends AbstractController
         $entreprise = new Entreprise();
 
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
-                                ->add('nom')
-                                ->add('adresse')
-                                ->add('siteWeb')
-                                ->add('activite')
+                                ->add('nom',TextType::class)
+                                ->add('adresse',TextareaType::class)
+                                ->add('siteWeb',TextType::class,['constraints' => new Url()])
+                                ->add('activite',TextareaType::class)
                                 ->getForm();
 
 
 $formulaireEntreprise->handleRequest($request);
 
-if($formulaireEntreprise->isSubmitted()){
+if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid()){
     $manager->persist($entreprise);
     $manager->flush();
 
